@@ -2,6 +2,17 @@ clear all
 close all
 clc
 
+%%%%%%%%%%%% numbering convention %%%%%%%%%%%%
+    
+                %%%%%   %%%%%
+                % 1 %   % 2 %
+                %%%%%   %%%%%
+            
+                %%%%%   %%%%%
+                % 4 %   % 3 %
+                %%%%%   %%%%%
+
+
 %% Synapse Parameters
 
 thetaE = -50; % step 0
@@ -62,28 +73,28 @@ tTh1 = 1;
 tTh2 = 1;
 
 N=4; % number of neurons in the network
+
 %% Gait selection
 
 Ic_=linspace(-0.43,0.13,50);
 gait = 'walk';
 switch gait
     case 'bound'
-        Ic12 = Ic_(1);
-        Ic34 = Ic_(1); % Ic_(6)
-        delta12 = delta_(1);
-        delta34 = delta_(6); % delta_(1)
+        Ic12 = Ic_(3);
+        Ic34 = Ic_(8); 
+        delta12 = delta_(3);
+        delta34 = delta_(8); 
     case 'trot'
-        Ic12 = Ic_(40); % Ic_(36)
-        Ic34 = Ic_(41); % Ic_(39)
-        delta12 = delta_(40); % delta_(36)
-        delta34 = delta_(41); % delta_(39)
+        Ic12 = Ic_(37);
+        Ic34 = Ic_(39); 
+        delta12 = delta_(37);
+        delta34 = delta_(39); 
     case 'walk'
         Ic12 = Ic_(49);
         Ic34 = Ic_(44);
         delta12 = delta_(49);
         delta34 = delta_(44);
 end
-
 
 %% Network building
 
@@ -165,6 +176,7 @@ Tspan = [0,6000]; % simulate for 6 seconds
 for i=1:Nphi0
 [TT1{i},XX1{i}] = netw.sim(Tspan,IC(i,:),options2);
 end
+
 %% Plot results
 
 figure
