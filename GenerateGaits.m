@@ -77,7 +77,7 @@ N=4; % number of neurons in the network
 %% Gait selection
 
 Ic_=linspace(-0.43,0.13,50);
-gait = 'walk';
+gait = 'bound';
 switch gait
     case 'bound'
         Ic12 = Ic_(3);
@@ -147,7 +147,7 @@ netw = CPG(N,neurons,g_in,g_ex,g_el,EsynS,EsynE,synapses_in,synapses_ex);
 % and limit case (close to adjacent gait/gaits)
 switch gait
     case 'bound'
-        phi0 = [0, 0.5, 0;
+        phi0 = [0, 0.5, 0.5;
                 0.45, 0.05, 0.45]; 
         Nphi0 = 2;
     case 'trot'
